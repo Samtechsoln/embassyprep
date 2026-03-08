@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embassy Prep — U.S. Visa Interview Preparation for Africa</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0b1a;
+    --bg2: #13102a;
+    --bg3: #1a1635;
+    --card: #1e1a3a;
+    --card2: #241f45;
+    --border: rgba(160,120,255,0.15);
+    --pink: #d946ef;
+    --purple: #7c3aed;
+    --grad: linear-gradient(135deg, #7c3aed, #d946ef);
+    --grad2: linear-gradient(135deg, #d946ef, #f97316);
+    --text: #f0eeff;
+    --muted: #8b7fb8;
+    --accent: #a78bfa;
+    --green: #34d399;
+    --yellow: #fbbf24;
+    --red: #f87171;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  /* ─── GLOBE BG ─── */
+  .globe-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  }
+  .globe-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 600'%3E%3Cpath fill='%23ffffff06' d='M150 100 Q300 50 450 100 Q600 150 750 100 Q800 200 750 300 Q700 400 600 380 Q500 360 400 380 Q300 400 200 350 Q100 300 150 200 Z'/%3E%3Ccircle cx='450' cy='300' r='200' fill='none' stroke='%23ffffff05' stroke-width='1'/%3E%3Ccircle cx='450' cy='300' r='260' fill='none' stroke='%23ffffff04' stroke-width='1'/%3E%3Cline x1='150' y1='300' x2='750' y2='300' stroke='%23ffffff04' stroke-width='1'/%3E%3Cline x1='450' y1='50' x2='450' y2='550' stroke='%23ffffff04' stroke-width='1'/%3E%3C/svg%3E") center/cover no-repeat;
+    opacity: 0.6;
+  }
+  /* ─── LAYOUT ─── */
+  #app { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; }
+  /* ─── SCREENS ─── */
+  .screen { display: none; min-height: 100vh; flex-direction: column; }
+  .screen.active { display: flex; }
+  /* ─── SPLASH ─── */
+  #splash {
+    align-items: center; justify-content: center; text-align: center;
+    background: radial-gradient(ellipse at 60% 40%, rgba(124,58,237,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 30% 70%, rgba(217,70,239,0.15) 0%, transparent 50%),
+                var(--bg);
+    padding: 2rem;
+    animation: fadeIn 0.6s ease;
+  }
+  .logo-mark {
+    width: 60px; height: 60px;
+    background: var(--grad);
+    border-radius: 16px;
+    display: grid; place-items: center;
+    margin: 0 auto 1rem;
+    box-shadow: 0 0 40px rgba(124,58,237,0.5);
+    font-size: 1.8rem;
+  }
+  .logo-text { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); }
+  .logo-text span { color: var(--pink); }
+  .splash-hero { margin: 3rem 0 2.5rem; }
+  .splash-hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.6rem, 7vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+  }
+  .splash-hero h1 em { color: var(--pink); font-style: normal; }
+  .splash-hero p { color: var(--muted); margin-top: 1rem; font-size: 1rem; max-width: 320px; margin-inline: auto; }
+  .btn-primary {
+    display: block; width: 100%; max-width: 320px; margin: 0 auto;
+    padding: 1rem 2rem;
+    background: var(--grad);
+    border: none; border-radius: 50px;
+    color: #fff; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.08em;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(217,70,239,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(217,70,239,0.5); }
+  .or-divider { color: var(--muted); font-size: 0.8rem; margin: 1.2rem 0; }
+  .social-row { display: flex; gap: 1rem; justify-content: center; }
+  .social-btn {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--grad); border: none;
+    color: #fff; font-size: 1.2rem; cursor: pointer;
+    display: grid; place-items: center;
+    transition: transform 0.2s;
+  }
+  .social-btn:hover { transform: scale(1.1); }
+  .signup-link { margin-top: 2rem; font-size: 0.85rem; color: var(--muted); }
+  .signup-link a { color: var(--pink); font-weight: 600; cursor: pointer; text-decoration: none; }
+  /* ─── AUTH ─── */
+  #login, #register {
+    align-items: center; justify-content: center;
+    background: radial-gradient(ellipse at 70% 30%, rgba(124,58,237,0.2) 0%, transparent 55%), var(--bg);
+    padding: 2rem;
+    animation: fadeIn 0.4s ease;
+  }
+  .back-btn {
+    position: absolute; top: 1.5rem; left: 1.5rem;
+    background: none; border: none; color: var(--accent);
+    font-size: 1.4rem; cursor: pointer;
+    display: flex; gap: 4px; align-items: center;
+  }
+  .back-btn span { font-size: 1.6rem; }
+  .auth-card { width: 100%; max-width: 380px; }
+  .auth-title { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 2rem; }
+  .auth-title span { color: var(--pink); }
+  .input-group {
+    position: relative; margin-bottom: 1rem;
+  }
+  .input-icon {
+    position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+    font-size: 1.1rem; color: var(--muted);
+  }
+  .input-group input {
+    width: 100%; padding: 1rem 1rem 1rem 3rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    outline: none; transition: border-color 0.2s;
+  }
+  .input-group input:focus { border-color: var(--purple); }
+  .input-group input::placeholder { color: var(--muted); }
+  .input-eye {
+    position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+    cursor: pointer; color: var(--muted); font-size: 1rem;
+  }
+  .remember-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--muted); }
+  .remember-row input[type=checkbox] { accent-color: var(--pink); width:16px; height:16px; }
+  .forgot { display: block; text-align: left; color: var(--muted); font-size: 0.85rem; text-decoration: underline; cursor: pointer; margin-top: 0.8rem; background: none; border: none; }
+  /* ─── MAIN APP ─── */
+  #main { display: none; flex-direction: column; }
+  #main.active { display: flex; }
+  /* ─── NAV ─── */
+  .top-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: rgba(13,11,26,0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; }
+  .nav-logo span { color: var(--pink); }
+  .hamburger { background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+  .profile-wrapper { position: relative; }
+  .profile-menu {
+    position: absolute; right: 0; top: 110%;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 0.5rem 0;
+    display: none; width: 140px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 150;
+    flex-direction: column;
+  }
+  .profile-menu a {
+    display: block; padding: 0.6rem 1rem; font-size: 0.9rem;
+    color: var(--text); text-decoration: none;
+    transition: background 0.2s;
+  }
+  .profile-menu a:hover { background: rgba(255,255,255,0.05); }
+  /* mobile menu overlay */
+  .mobile-menu {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg2); transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 200;
+    padding: 2rem 1.5rem;
+    display: flex; flex-direction: column;
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu .close-menu {
+    align-self: flex-end; background: none; border: none;
+    color: var(--text); font-size: 1.8rem; cursor: pointer;
+  }
+  .mobile-menu nav {
+    margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .mobile-menu nav a {
+    color: var(--text); font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem; text-decoration: none;
+  }
+  /* ─── BOTTOM NAV ─── */
+  .bottom-nav {
+    display: flex; position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(13,11,26,0.97); backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    z-index: 100; padding: 0.6rem 0 0.8rem;
+  }
+  .nav-item {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
+    background: none; border: none; color: var(--muted);
+    font-family: 'DM Sans', sans-serif; font-size: 0.62rem; cursor: pointer;
+    transition: color 0.2s;
+    padding: 0.3rem 0;
+  }
+  .nav-item .ni { font-size: 1.3rem; }
+  .nav-item.active { color: var(--pink); }
+  .nav-item.active .ni-wrap {
+    background: rgba(217,70,239,0.12);
+    border-radius: 10px;
+    padding: 4px 10px;
+  }
+  /* ─── PAGE CONTENT ─── */
+  .page { display: none; padding: 1.5rem 1.5rem 6rem; animation: fadeIn 0.3s ease; }
+  .page.active { display: block; }
+  /* ─── VISA SELECTION ─── */
+  .page-header { margin-bottom: 1.5rem; }
+  .page-header h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.6rem; }
+  .page-header p { color: var(--muted); font-size: 0.88rem; margin-top: 0.3rem; }
+  .search-bar {
+    display: flex; align-items: center; gap: 0.7rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 0.8rem 1rem; margin-bottom: 1.5rem;
+  }
+  .search-bar input {
+    background: none; border: none; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; flex: 1; outline: none;
+  }
+  .search-bar input::placeholder { color: var(--muted); }
+  .visa-list { display: flex; flex-direction: column; gap: 0.8rem; }
+  .visa-card {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1rem 1.2rem;
+    cursor: pointer; transition: border-color 0.2s, transform 0.2s;
+  }
+  .visa-card:hover { border-color: var(--purple); transform: translateX(3px); }
+  .visa-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--grad); display: grid; place-items: center;
+    font-size: 1.4rem; flex-shrink: 0;
+  }
+  .visa-info { flex: 1; }
+  .visa-info strong { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; display: block; }
+  .visa-info span { color: var(--muted); font-size: 0.82rem; }
+  .visa-arrow { color: var(--muted); font-size: 1rem; }
+  /* ─── CHECKLIST ─── */
+  .checklist-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; }
+  .checklist-header select {
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--text); font-family: 'DM Sans', sans-serif;
+    padding: 0.6rem 1rem; border-radius: 10px; font-size: 0.88rem;
+    outline: none; flex: 1;
+  }
+  .checklist-country { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; }
+  .country-tag {
+    background: rgba(217,70,239,0.15); border: 1px solid rgba(217,70,239,0.3);
+    border-radius: 20px; padding: 0.4rem 1rem; font-size: 0.82rem; color: var(--pink);
+    display: flex; align-items: center; gap: 0.4rem; cursor: pointer;
+  }
+  .section-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--accent); margin: 1.2rem 0 0.8rem; }
+  .checklist-item {
+    display: flex; align-items: flex-start; gap: 0.9rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 0.9rem 1rem; margin-bottom: 0.6rem;
+    cursor: pointer; transition: border-color 0.2s;
+  }
+  .checklist-item.done { border-color: rgba(52,211,153,0.3); }
+  .checklist-item.done .ci-title { text-decoration: line-through; color: var(--muted); }
+  .ci-check {
+    width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0;
+    border: 2px solid var(--border); display: grid; place-items: center;
+    font-size: 0.75rem; transition: all 0.2s; margin-top: 1px;
+  }
+  .checklist-item.done .ci-check { background: var(--green); border-color: var(--green); color: #0d0b1a; }
+  .ci-body { flex: 1; }
+  .ci-title { font-size: 0.9rem; font-weight: 500; }
+  .ci-note { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+  .progress-bar { height: 6px; background: var(--card2); border-radius: 3px; margin-bottom: 1.5rem; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--grad); border-radius: 3px; transition: width 0.4s ease; }
+  .progress-label { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; }
+  /* ─── INTERVIEW Q&A ─── */
+  .cat-pills { display: flex; gap: 0.6rem; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 1.2rem; }
+  .cat-pills::-webkit-scrollbar { display: none; }
+  .pill {
+    padding: 0.45rem 1rem; border-radius: 20px; white-space: nowrap;
+    font-size: 0.8rem; cursor: pointer;
+    background: var(--card); border: 1px solid var(--border); color: var(--muted);
+    transition: all 0.2s;
+  }
+  .pill.active { background: rgba(217,70,239,0.2); border-color: var(--pink); color: var(--pink); }
+  .qa-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; margin-bottom: 1rem; overflow: hidden;
+    cursor: pointer;
+  }
+  .qa-question {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.2rem; font-weight: 500; font-size: 0.92rem;
+  }
+  .qa-toggle { color: var(--muted); font-size: 1.2rem; transition: transform 0.3s; }
+  .qa-card.open .qa-toggle { transform: rotate(180deg); }
+  .qa-answer {
+    display: none;
+    padding: 0 1.2rem 1.2rem; font-size: 0.87rem; line-height: 1.6; color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+  }
+  .qa-card.open .qa-answer { display: block; }
+  .qa-answer .tip {
+    background: rgba(124,58,237,0.15); border-left: 3px solid var(--purple);
+    border-radius: 0 8px 8px 0; padding: 0.7rem 0.9rem; margin-top: 0.8rem;
+    font-size: 0.82rem;
+  }
+  /* ─── MOCK INTERVIEW ─── */
+  .mock-setup { text-align: center; padding: 1rem 0; }
+  .mock-setup h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .mock-setup p { color: var(--muted); font-size: 0.87rem; margin-bottom: 2rem; }
+  .visa-select-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem; }
+  .vsg-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1rem; text-align: center;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .vsg-item:hover, .vsg-item.selected { border-color: var(--pink); background: rgba(217,70,239,0.1); }
+  .vsg-item .vi { font-size: 1.8rem; margin-bottom: 0.3rem; }
+  .vsg-item strong { font-family: 'Syne', sans-serif; font-size: 0.85rem; display: block; }
+  .vsg-item small { color: var(--muted); font-size: 0.72rem; }
+  /* ─── MOCK SESSION ─── */
+  .mock-session { display: none; }
+  .mock-session.active { display: block; }
+  .interview-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);
+    border-radius: 20px; padding: 0.4rem 0.9rem; font-size: 0.78rem; color: var(--green);
+    margin-bottom: 1.5rem;
+  }
+  .interview-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .q-counter { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .current-question {
+    background: var(--grad); border-radius: 16px;
+    padding: 1.5rem; margin-bottom: 1.5rem;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; line-height: 1.4;
+  }
+  .answer-area {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1rem; margin-bottom: 1rem;
+  }
+  .answer-area textarea {
+    width: 100%; background: none; border: none; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; line-height: 1.6;
+    resize: none; outline: none; min-height: 100px;
+  }
+  .answer-area textarea::placeholder { color: var(--muted); }
+  .mock-controls { display: flex; gap: 0.8rem; }
+  .btn-secondary {
+    flex: 1; padding: 0.9rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 50px; color: var(--text);
+    font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.88rem;
+    cursor: pointer; transition: border-color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--purple); }
+  .btn-primary-sm {
+    flex: 2; padding: 0.9rem;
+    background: var(--grad); border: none; border-radius: 50px;
+    color: #fff; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-primary-sm:hover { opacity: 0.9; }
+  .feedback-card {
+    background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25);
+    border-radius: 14px; padding: 1.2rem; margin-top: 1rem; display: none;
+  }
+  .feedback-card.show { display: block; }
+  .feedback-card h4 { color: var(--green); font-family: 'Syne', sans-serif; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem; }
+  .feedback-card p { color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
+  .score-badges { display: flex; gap: 0.6rem; margin-top: 0.8rem; flex-wrap: wrap; }
+  .badge {
+    padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+  }
+  .badge.good { background: rgba(52,211,153,0.2); color: var(--green); }
+  .badge.warn { background: rgba(251,191,36,0.2); color: var(--yellow); }
+  .badge.tip { background: rgba(124,58,237,0.2); color: var(--accent); }
+  /* ─── WHAT TO EXPECT ─── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0.55rem; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--purple), var(--pink), transparent);
+  }
+  .tl-item { position: relative; margin-bottom: 1.5rem; }
+  .tl-dot {
+    position: absolute; left: -1.7rem; top: 0.3rem;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--grad); border: 2px solid var(--bg);
+    box-shadow: 0 0 12px rgba(217,70,239,0.5);
+  }
+  .tl-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1rem 1.2rem;
+  }
+  .tl-time { font-size: 0.72rem; color: var(--pink); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+  .tl-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .tl-desc { color: var(--muted); font-size: 0.84rem; line-height: 1.5; }
+  .alert-box {
+    background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.3);
+    border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 1.5rem;
+    display: flex; gap: 0.8rem; align-items: flex-start;
+  }
+  .alert-box .icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+  .alert-box p { font-size: 0.85rem; color: var(--yellow); line-height: 1.5; }
+  /* ─── RESOURCES ─── */
+  .resource-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.2rem; margin-bottom: 1rem;
+    display: flex; gap: 1rem; align-items: center;
+    cursor: pointer; text-decoration: none; color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .resource-card:hover { border-color: var(--purple); }
+  .res-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    background: var(--card2); display: grid; place-items: center;
+    font-size: 1.3rem; flex-shrink: 0;
+  }
+  .res-body { flex: 1; }
+  .res-body strong { font-size: 0.92rem; display: block; font-weight: 600; }
+  .res-body span { color: var(--muted); font-size: 0.8rem; }
+  .res-arrow { color: var(--muted); }
+  .disclaimer {
+    background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.2);
+    border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 1.5rem;
+  }
+  .disclaimer h4 { color: var(--red); font-family: 'Syne', sans-serif; font-size: 0.88rem; margin-bottom: 0.4rem; }
+  .disclaimer p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+  .profile-hero {
+    background: linear-gradient(135deg, rgba(124,58,237,0.28), rgba(217,70,239,0.18));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .profile-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--grad);
+    display: grid;
+    place-items: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .profile-hero h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+  }
+  .profile-hero p {
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+  .profile-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  .profile-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1rem;
+  }
+  .profile-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    margin-bottom: 0.85rem;
+    color: var(--accent);
+  }
+  .profile-form {
+    display: grid;
+    gap: 0.8rem;
+  }
+  .profile-form label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+    display: block;
+  }
+  .profile-form input,
+  .profile-form select,
+  .profile-form textarea {
+    width: 100%;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    padding: 0.75rem 0.85rem;
+    outline: none;
+  }
+  .profile-form textarea {
+    min-height: 90px;
+    resize: vertical;
+  }
+  .profile-actions {
+    display: flex;
+    gap: 0.7rem;
+    margin-top: 0.3rem;
+  }
+  .profile-actions .btn-secondary,
+  .profile-actions .btn-primary-sm {
+    flex: 1;
+  }
+  .profile-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .stat-chip {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.8rem;
+  }
+  .stat-chip small {
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+  .stat-chip strong {
+    display: block;
+    margin-top: 0.25rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+  }
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+  /* ─── VISA DETAIL ─── */
+  #visa-detail { display: none; padding: 1.5rem 1.5rem 6rem; }
+  #visa-detail.active { display: block; animation: fadeIn 0.3s ease; }
+  /* ─── RESPONSIVE ─── */
+  @media(max-width:900px) {
+    .page { padding: 1.25rem 1.25rem 6.5rem; }
+    #visa-detail { padding: 1.25rem 1.25rem 6.5rem; }
+  }
+
+  @media(max-width:700px) {
+    .checklist-header { flex-wrap: wrap; }
+    .checklist-header select { width: 100%; }
+  }
+
+  @media(max-width:480px) {
+    .top-nav { padding: 0.85rem 1rem; }
+    .page { padding: 1rem 1rem 6.75rem; }
+    #visa-detail { padding: 1rem 1rem 6.75rem; }
+
+    .splash-hero { padding: 0 1rem !important; }
+    #splash > div:first-child,
+    #splash > div:last-child {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+
+    .checklist-header { gap: 0.6rem; }
+    .mock-controls { flex-direction: column; }
+    .btn-secondary, .btn-primary-sm { width: 100%; }
+    .visa-select-grid { grid-template-columns: 1fr; }
+    .profile-actions { flex-direction: column; }
+    .profile-stats { grid-template-columns: 1fr; }
+
+    .bottom-nav {
+      overflow-x: auto;
+      justify-content: flex-start;
+      gap: 0.15rem;
+      padding-bottom: calc(0.8rem + env(safe-area-inset-bottom));
+      -webkit-overflow-scrolling: touch;
+    }
+    .bottom-nav::-webkit-scrollbar { display: none; }
+    .nav-item { flex: 0 0 72px; min-width: 72px; }
+  }
+
+  @media(min-width:600px) {
+    .visa-select-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="globe-bg"></div>
+<div id="app">
+
+  <!-- ───────────── SPLASH ───────────── -->
+  <div class="screen active" id="splash">
+    <div style="text-align:center;padding:2rem 2rem 1rem;">
+      <div class="logo-mark">🛂</div>
+      <div class="logo-text">Embassy<span>Prep</span></div>
+    </div>
+    <div class="splash-hero" style="padding:0 2rem;">
+      <h1>Let's Get <em>Started!</em></h1>
+      <p>Your complete guide to acing the U.S. consular interview — built for African applicants.</p>
+    </div>
+    <div style="padding:0 2rem 2rem;">
+      <button class="btn-primary" onclick="goTo('login')">SIGN IN</button>
+      <div class="or-divider">— OR SIGN IN WITH —</div>
+      <div class="social-row">
+        <button class="social-btn" title="Email">✉️</button>
+        <button class="social-btn" title="Phone">📱</button>
+      </div>
+      <p class="signup-link">DIDN'T HAVE ACCOUNT? <a onclick="goTo('register')">SIGN UP NOW</a></p>
+    </div>
+  </div>
+
+  <!-- ───────────── LOGIN ───────────── -->
+  <div class="screen" id="login" style="position:relative;">
+    <button class="back-btn" onclick="goTo('splash')"><span>«</span></button>
+    <div class="auth-card">
+      <div class="auth-title">Welcome <span>Back!</span></div>
+      <div class="input-group">
+        <span class="input-icon">✉️</span>
+        <input type="email" placeholder="Email Address" id="login-email">
+      </div>
+      <div class="input-group">
+        <span class="input-icon">🔒</span>
+        <input type="password" placeholder="Password" id="login-pass">
+        <span class="input-eye" onclick="togglePw('login-pass')">👁</span>
+      </div>
+      <div class="remember-row">
+        <input type="checkbox" checked> Remember for 30 days
+      </div>
+      <button class="btn-primary" onclick="enterApp()">LOG IN</button>
+      <button class="forgot">Forgot Password?</button>
+      <p class="signup-link" style="margin-top:2rem;">Don't have an account? <a onclick="goTo('register')">Sign up</a></p>
+    </div>
+  </div>
+
+  <!-- ───────────── REGISTER ───────────── -->
+  <div class="screen" id="register" style="position:relative;">
+    <button class="back-btn" onclick="goTo('login')"><span>«</span></button>
+    <div class="auth-card">
+      <div class="auth-title">Create an <span>Account!</span></div>
+      <div class="input-group">
+        <span class="input-icon">👥</span>
+        <input type="text" placeholder="Username">
+      </div>
+      <div class="input-group">
+        <span class="input-icon">✉️</span>
+        <input type="email" placeholder="Email Address">
+      </div>
+      <div class="input-group">
+        <span class="input-icon">🔒</span>
+        <input type="password" placeholder="Password">
+        <span class="input-eye">👁</span>
+      </div>
+      <div class="input-group">
+        <span class="input-icon">🔒</span>
+        <input type="password" placeholder="Confirm Password">
+        <span class="input-eye">👁</span>
+      </div>
+      <button class="btn-primary" onclick="registerApp()" style="margin-top:0.5rem;">CREATE ACCOUNT</button>
+      <p class="signup-link" style="margin-top:1.5rem;">Already have an account? <a onclick="goTo('login')">Sign in</a></p>
+    </div>
+  </div>
+
+  <!-- ───────────── MAIN APP ───────────── -->
+  <div id="main">
+    <nav class="top-nav">
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <div class="nav-logo">Embassy<span>Prep</span></div>
+      <div class="profile-wrapper">
+        <button id="profile-btn" style="width:32px;height:32px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-size:0.8rem;cursor:pointer;border:none;color:#fff;" title="Profile" onclick="toggleProfileMenu()">👤</button>
+        <div id="profile-menu" class="profile-menu">
+          <a href="#" onclick="alert('Profile page');toggleProfileMenu();">Profile</a>
+          <a href="#" onclick="signOut();">Sign Out</a>
+        </div>
+      </div>
+    </nav>
+    <!-- mobile slide-in menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="close-menu" onclick="toggleMenu()">×</button>
+      <nav>
+        <a href="#" onclick="switchTab('visa', document.querySelectorAll('.nav-item')[0]);toggleMenu()">Visa Selection</a>
+        <a href="#" onclick="switchTab('checklist', document.querySelectorAll('.nav-item')[1]);toggleMenu()">Checklist</a>
+        <a href="#" onclick="switchTab('interview', document.querySelectorAll('.nav-item')[2]);toggleMenu()">Interview Q&A</a>
+        <a href="#" onclick="switchTab('mock', document.querySelectorAll('.nav-item')[3]);toggleMenu()">Mock Interview</a>
+        <a href="#" onclick="switchTab('expect', document.querySelectorAll('.nav-item')[4]);toggleMenu()">What to Expect</a>
+        <a href="#" onclick="switchTab('resources', document.querySelectorAll('.nav-item')[5]);toggleMenu()">Resources</a>
+        <a href="#" onclick="signOut();toggleMenu()" style="color:var(--red);font-weight:600;">Sign Out</a>
+      </nav>
+    </div>
+
+    <!-- VISA SELECTION PAGE -->
+    <div class="page active" id="page-visa">
+      <div class="page-header">
+        <h2>Visa Selection</h2>
+        <p>Choose your visa type to get started</p>
+      </div>
+      <div class="search-bar">
+        <span style="color:var(--muted)">🔍</span>
+        <input type="text" placeholder="Search visa types..." oninput="filterVisas(this.value)">
+      </div>
+      <div class="visa-list" id="visa-list"></div>
+    </div>
+
+    <!-- VISA DETAIL PAGE -->
+    <div id="visa-detail">
+      <button class="back-btn" style="position:relative;top:auto;left:auto;margin-bottom:1rem;display:flex;" onclick="closeDetail()">← Back</button>
+      <div id="visa-detail-content"></div>
+    </div>
+
+    <!-- CHECKLIST PAGE -->
+    <div class="page" id="page-checklist">
+      <div class="page-header">
+        <h2>Document Checklist</h2>
+        <p>Track your required documents</p>
+      </div>
+      <div class="checklist-header">
+        <select id="checklist-visa" onchange="renderChecklist()">
+          <option value="b1b2">B1/B2 Visitor</option>
+          <option value="f1">F-1 Student</option>
+          <option value="h1b">H-1B Work</option>
+          <option value="k1">K-1 Fiancé</option>
+          <option value="ir">IR Immigrant</option>
+          <option value="dv">Diversity Visa (DV)</option>
+        </select>
+        <select id="checklist-country" onchange="renderChecklist()">
+          <option>Nigeria</option><option>Ghana</option><option>Kenya</option>
+          <option>South Africa</option><option>Ethiopia</option><option>Senegal</option>
+          <option>Côte d'Ivoire</option><option>Mozambique</option>
+          <option>Sierra Leone</option><option>Zambia</option><option>Burkina Faso</option>
+        </select>
+      </div>
+      <div class="progress-label" id="checklist-progress-label">0 of 0 completed</div>
+      <div class="progress-bar"><div class="progress-fill" id="checklist-progress" style="width:0%"></div></div>
+      <div id="checklist-items"></div>
+    </div>
+
+    <!-- INTERVIEW Q&A PAGE -->
+    <div class="page" id="page-interview">
+      <div class="page-header">
+        <h2>Interview Q&A</h2>
+        <p>Practice common consular questions</p>
+      </div>
+      <div class="cat-pills" id="qa-pills"></div>
+      <div id="qa-list"></div>
+    </div>
+
+    <!-- MOCK INTERVIEW PAGE -->
+    <div class="page" id="page-mock">
+      <div class="page-header">
+        <h2>Mock Interview</h2>
+        <p>Simulate a real consular interview</p>
+      </div>
+      <div class="mock-setup" id="mock-setup">
+        <h3>Choose Visa Type</h3>
+        <p>Select the visa you're applying for to start your simulation</p>
+        <div class="visa-select-grid" id="mock-visa-grid"></div>
+        <button class="btn-primary" onclick="startMock()">START INTERVIEW</button>
+      </div>
+      <div class="mock-session" id="mock-session">
+        <div class="interview-badge"><span class="dot"></span> Live Interview Session</div>
+        <div class="q-counter" id="q-counter">Question 1 of 5</div>
+        <div class="current-question" id="current-q"></div>
+        <div class="answer-area">
+          <textarea id="answer-text" placeholder="Type your answer here... Be honest, clear, and concise."></textarea>
+        </div>
+        <div class="mock-controls">
+          <button class="btn-secondary" onclick="skipQ()">Skip</button>
+          <button class="btn-primary-sm" onclick="submitAnswer()">Get Feedback →</button>
+        </div>
+        <div class="feedback-card" id="feedback-card">
+          <h4>🤖 AI Feedback</h4>
+          <p id="feedback-text"></p>
+          <div class="score-badges" id="feedback-badges"></div>
+        </div>
+        <button class="btn-primary" style="margin-top:1rem;max-width:100%;display:none;" onclick="nextQ()" id="next-btn">NEXT QUESTION →</button>
+      </div>
+    </div>
+
+    <!-- WHAT TO EXPECT PAGE -->
+    <div class="page" id="page-expect">
+      <div class="page-header">
+        <h2>What to Expect</h2>
+        <p>Your consulate appointment day, step by step</p>
+      </div>
+      <div class="alert-box">
+        <span class="icon">⚠️</span>
+        <p>Arrive <strong>15–30 minutes early</strong>. No electronics (phones, laptops) are allowed inside most U.S. embassies. Store them at designated facilities outside.</p>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+
+    <!-- RESOURCES PAGE -->
+    <div class="page" id="page-resources">
+      <div class="page-header">
+        <h2>Resources</h2>
+        <p>Official guidance and helpful links</p>
+      </div>
+      <div class="disclaimer">
+        <h4>⚠️ Legal Disclaimer</h4>
+        <p>Embassy Prep provides educational content only and does not constitute legal advice. Always consult official U.S. government sources and qualified immigration attorneys for your specific situation.</p>
+      </div>
+      <div id="resources-list"></div>
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" onclick="switchTab('visa', this)">
+        <div class="ni-wrap"><span class="ni">✈️</span></div>
+        <span>Visa Sele...</span>
+      </button>
+      <button class="nav-item" onclick="switchTab('checklist', this)">
+        <div class="ni-wrap"><span class="ni">✅</span></div>
+        <span>Checklist</span>
+      </button>
+      <button class="nav-item" onclick="switchTab('interview', this)">
+        <div class="ni-wrap"><span class="ni">💬</span></div>
+        <span>Interview...</span>
+      </button>
+      <button class="nav-item" onclick="switchTab('mock', this)">
+        <div class="ni-wrap"><span class="ni">🎤</span></div>
+        <span>Mock Inte...</span>
+      </button>
+      <button class="nav-item" onclick="switchTab('expect', this)">
+        <div class="ni-wrap"><span class="ni">📋</span></div>
+        <span>What to E...</span>
+      </button>
+      <button class="nav-item" onclick="switchTab('resources', this)">
+        <div class="ni-wrap"><span class="ni">🌐</span></div>
+        <span>Resources</span>
+      </button>
+    </nav>
+  </div><!-- end #main -->
+
+</div><!-- end #app -->
+
+<script>
+// ─── DATA ─────────────────────────────────────────────────────────────────────
+const VISAS = [
+  { code:'A', label:'A Visa', type:'Non-Immigrant', icon:'🏛️', desc:'Diplomatic & Government Officials', color:'#7c3aed',
+    about:'The A visa is for foreign government officials, diplomats, and immediate family traveling to the U.S. in an official capacity.',
+    requirements:['Official government employment letter','Valid diplomatic passport','DS-160 confirmation','Appointment confirmation'],
+    questions:['What is the nature of your official duties?','How long is your assignment in the U.S.?']
+  },
+  { code:'B1/B2', label:'B1/B2 Visitor', type:'Non-Immigrant', icon:'✈️', desc:'Tourism, Business & Medical Visits', color:'#d946ef',
+    about:'The B-1/B-2 visa is for temporary visitors to the U.S. for business (B-1), tourism, pleasure, or medical treatment (B-2).',
+    requirements:['Valid passport (6+ months validity)','DS-160 confirmation','Visa fee payment receipt','Bank statements / financial proof','Travel itinerary','Ties to home country evidence'],
+    questions:['Why are you traveling to the U.S.?','How long will you stay?','Who is sponsoring your trip?','Do you have family in the U.S.?']
+  },
+  { code:'E', label:'E Treaty Visas', type:'Non-Immigrant', icon:'🤝', desc:'Treaty Traders & Treaty Investors', color:'#0ea5e9',
+    about:'E visas are for nationals of countries that have treaties of commerce with the U.S. to engage in trade or invest substantial capital.',
+    requirements:['Evidence of treaty country nationality','Business registration documents','Proof of substantial trade/investment','Financial statements','DS-160 confirmation'],
+    questions:['Describe the nature of your business trade with the U.S.','What percentage of your trade is with the U.S.?','How will you direct and develop the enterprise?']
+  },
+  { code:'F', label:'F-1 Student', type:'Immigrant', icon:'🎓', desc:'Academic Studies & Language Programs', color:'#10b981',
+    about:'The F-1 visa allows foreign nationals to pursue academic studies or language training programs at accredited U.S. institutions.',
+    requirements:['Form I-20 from SEVIS-approved school','SEVIS fee payment receipt (I-901)','DS-160 confirmation','Proof of financial support','Academic transcripts & diplomas','Bank statements','Letter of admission'],
+    questions:['Which school are you attending?','Why did you choose this program?','How will you finance your education?','Do you plan to return home after studies?']
+  },
+  { code:'H', label:'H Temporary Worker', type:'Non-Immigrant', icon:'👷', desc:'Specialty Occupations, Agricultural Workers', color:'#f97316',
+    about:'H visas are for temporary workers coming to the U.S. to fill specific labor needs, including specialty occupations (H-1B) and agricultural workers (H-2A).',
+    requirements:['I-129 petition approval notice','DS-160 confirmation','Employment offer letter','Degree/credentials','DS-2019 if applicable','Passport (6+ months validity)'],
+    questions:['Who is your employer and what are your duties?','What qualifications do you have for this role?','Where will you be working?']
+  },
+  { code:'I', label:'I Media Visa', type:'Non-Immigrant', icon:'📰', desc:'Journalists, Media Representatives', color:'#8b5cf6',
+    about:'The I visa is for representatives of foreign media, including members of the press, radio, film, and print industries.',
+    requirements:['Press credentials / employer letter','DS-160 confirmation','Evidence of media organization','Passport','Appointment confirmation'],
+    questions:['What media organization do you represent?','What is the purpose of your visit?','How long will your assignment last?']
+  },
+  { code:'J', label:'J Exchange Visitor', type:'Non-Immigrant', icon:'🌍', desc:'Exchange Programs, Research, Teaching', color:'#ec4899',
+    about:'J-1 visas facilitate cultural exchange programs, including au pairs, camp counselors, professors, research scholars, and medical/business trainees.',
+    requirements:['Form DS-2019','SEVIS fee receipt','DS-160 confirmation','Program sponsor letter','Financial evidence','Health insurance proof'],
+    questions:['What exchange program are you participating in?','Who is sponsoring your visit?','What are your plans after the program?']
+  },
+  { code:'K', label:'K Fiancé(e) Visa', type:'Non-Immigrant', icon:'💍', desc:'Fiancé(e) & Spouse of U.S. Citizens', color:'#f43f5e',
+    about:'K-1 visas are for foreign-citizen fiancé(e)s of U.S. citizens. The couple must marry within 90 days of the K-1 holder\'s arrival.',
+    requirements:['I-129F approval notice','DS-160 confirmation','Evidence of relationship (photos, communication records)','Proof of in-person meeting within 2 years','Birth certificates','Medical exam (Form I-693)','Financial evidence (I-134)'],
+    questions:['How did you meet your fiancé?','When did you last meet in person?','When and where will you marry?','What are your plans after marriage?']
+  },
+  { code:'L', label:'L Intracompany', type:'Non-Immigrant', icon:'🏢', desc:'Executives, Managers & Specialists', color:'#14b8a6',
+    about:'L-1 visas allow multinational companies to transfer employees to the U.S. in executive, managerial, or specialized knowledge roles.',
+    requirements:['I-129 approval or blanket petition','Company organizational chart','Evidence of executive/managerial role','DS-160 confirmation','Employment history documentation','Company financial statements'],
+    questions:['What is your role in the company?','How long have you worked for this company?','What will your responsibilities be in the U.S.?']
+  },
+  { code:'M', label:'M Vocational', type:'Immigrant', icon:'🔧', desc:'Vocational & Non-Academic Studies', color:'#eab308',
+    about:'The M-1 visa is for students pursuing vocational or non-academic study or training in the United States.',
+    requirements:['Form I-20 (M-1)','SEVIS fee receipt','Admission letter','Financial proof','DS-160 confirmation','Passport (6+ months validity)'],
+    questions:['What vocational program will you study?','How does this training apply to your career back home?','Who is financially supporting you?']
+  },
+];
+
+const CHECKLIST_DATA = {
+  b1b2: {
+    core: [
+      {title:'Valid Passport', note:'Must be valid at least 6 months beyond your intended stay'},
+      {title:'DS-160 Confirmation Page', note:'Printed nonimmigrant visa application confirmation'},
+      {title:'Visa Fee Receipt (MRV Fee)', note:'Payment confirmation for visa application fee'},
+      {title:'Appointment Confirmation Letter', note:'From the U.S. Embassy scheduling system'},
+      {title:'Photo (2×2 inches / 5×5 cm)', note:'White background, taken within 6 months'},
+    ],
+    financial: [
+      {title:'Bank Statements (3–6 months)', note:'Showing sufficient funds for trip'},
+      {title:'Employment Letter', note:'Stating position, salary, and approved leave'},
+      {title:'Payslips (3 months)', note:'Recent pay stubs from your employer'},
+      {title:'Tax Returns / ITR', note:'Most recent income tax return filing'},
+    ],
+    ties: [
+      {title:'Property Documents', note:'Title deeds or tenancy agreements'},
+      {title:'Family ties evidence', note:'Birth/marriage certificates of family in home country'},
+      {title:'Return Flight Booking', note:'Round trip or onward travel itinerary'},
+    ]
+  },
+  f1: {
+    core: [
+      {title:'Valid Passport', note:'6+ months validity beyond program end date'},
+      {title:'Form I-20', note:'Certificate of Eligibility from SEVIS-approved school'},
+      {title:'SEVIS Fee Receipt (I-901)', note:'SEVIS fee payment confirmation'},
+      {title:'DS-160 Confirmation', note:'Completed online visa application'},
+      {title:'Visa Fee Receipt', note:'MRV fee payment confirmation'},
+      {title:'Appointment Confirmation', note:'U.S. Embassy appointment letter'},
+    ],
+    financial: [
+      {title:'Scholarship / Award Letter', note:'If receiving institutional funding'},
+      {title:'Sponsor\'s Bank Statements', note:'3–6 months of statements showing sufficient funds'},
+      {title:'Affidavit of Support', note:'Signed letter from financial sponsor'},
+      {title:'Sponsor\'s Employment Letter', note:'Job letter and salary information'},
+    ],
+    academic: [
+      {title:'Academic Transcripts', note:'Official transcripts from all institutions attended'},
+      {title:'Diplomas & Certificates', note:'Copies of degrees or certificates awarded'},
+      {title:'Admission Letter', note:'Official letter from U.S. institution'},
+      {title:'TOEFL / IELTS Score Report', note:'If applicable'},
+      {title:'Standardized Test Scores', note:'GRE, GMAT, SAT, etc. if applicable'},
+    ]
+  },
+  h1b: {
+    core: [
+      {title:'Valid Passport', note:'6+ months validity'},
+      {title:'I-129 Petition Approval Notice (I-797)', note:'Approved petition from USCIS'},
+      {title:'DS-160 Confirmation', note:'Nonimmigrant visa application'},
+      {title:'Visa Fee Receipt', note:'MRV fee payment'},
+      {title:'Appointment Confirmation', note:'Embassy appointment letter'},
+    ],
+    employment: [
+      {title:'Employment Offer Letter', note:'Detailing job title, duties, salary, start date'},
+      {title:'Educational Credentials', note:'Degree diplomas and transcripts'},
+      {title:'Professional Licenses', note:'If applicable to your occupation'},
+      {title:'Resume / CV', note:'Updated work history'},
+      {title:'Employer Support Letter', note:'From U.S. petitioner/employer'},
+    ],
+    financial: [
+      {title:'W-2 / Tax Returns', note:'Most recent if previously worked in U.S.'},
+      {title:'Pay Stubs', note:'From current employer if applicable'},
+    ]
+  },
+  k1: {
+    core: [
+      {title:'Valid Passport', note:'6+ months validity'},
+      {title:'I-129F Approval Notice', note:'Approved petition for alien fiancé(e)'},
+      {title:'DS-160 Confirmation', note:'Nonimmigrant visa application'},
+      {title:'Visa Fee Receipt', note:'K-1 visa application fee payment'},
+      {title:'Medical Exam Results', note:'Form I-693 from approved panel physician'},
+    ],
+    relationship: [
+      {title:'Birth Certificate', note:'Official certified copy with translation if needed'},
+      {title:'Divorce / Death Decrees', note:'If either party was previously married'},
+      {title:'Relationship Evidence', note:'Photos together, chat logs, call records, emails'},
+      {title:'Proof of In-Person Meeting', note:'Travel records, photos showing meeting within 2 years'},
+    ],
+    financial: [
+      {title:'I-134 Affidavit of Support', note:'From U.S. citizen petitioner'},
+      {title:'Petitioner\'s Tax Returns', note:'Most recent federal income tax returns'},
+      {title:'Petitioner\'s Pay Stubs', note:'Recent 3 months from U.S. employer'},
+    ]
+  },
+  ir: {
+    core: [
+      {title:'Valid Passport', note:'6+ months validity'},
+      {title:'I-130 Approval Notice', note:'Petition for Alien Relative approval'},
+      {title:'DS-260 (Immigrant Visa Application)', note:'Online immigrant visa application'},
+      {title:'Visa Fee Receipt', note:'Immigrant visa fee payment confirmation'},
+      {title:'Medical Exam', note:'From embassy-approved physician'},
+    ],
+    civil: [
+      {title:'Birth Certificate', note:'Official certified copy'},
+      {title:'Marriage Certificate', note:'If applying as spouse'},
+      {title:'Divorce / Death Decrees', note:'For all prior marriages'},
+      {title:'Police Certificates', note:'From all countries lived in 6+ months after age 16'},
+    ],
+    financial: [
+      {title:'I-864 Affidavit of Support', note:'From U.S. petitioner'},
+      {title:'Petitioner\'s Tax Returns (3 yrs)', note:'IRS transcripts or filed returns'},
+      {title:'Petitioner\'s W-2s & Pay Stubs', note:'Employment and income verification'},
+    ]
+  },
+  dv: {
+    core: [
+      {title:'Valid Passport', note:'6+ months validity'},
+      {title:'DV Lottery Confirmation', note:'Confirmation number from lottery entry'},
+      {title:'DS-260 Online Application', note:'Completed immigrant visa application'},
+      {title:'Visa Fee Receipt', note:'DV visa fee payment'},
+      {title:'Medical Exam', note:'From embassy-approved panel physician'},
+    ],
+    civil: [
+      {title:'Birth Certificate', note:'Official certified copy'},
+      {title:'Marriage Certificate', note:'If married'},
+      {title:'Divorce / Death Decrees', note:'For prior marriages'},
+      {title:'Police Certificates', note:'From each country of residence 6+ months (after age 16)'},
+      {title:'Educational Credentials', note:'High school diploma or equivalent (required for DV)'},
+    ],
+    financial: [
+      {title:'Proof of Employment', note:'Job offer or employment letter (recommended)'},
+      {title:'Bank Statements', note:'Evidence of financial stability'},
+    ]
+  }
+};
+
+const QA_DATA = {
+  'B1/B2 Visitor': [
+    { q:'Why are you traveling to the United States?', a:'Be specific about your purpose: tourism, visiting family, attending a conference, etc. State exact dates and locations. Show genuine intent.', tip:'Tie your travel to a clear, specific reason. Vague answers raise concerns.' },
+    { q:'How long do you plan to stay?', a:'Give exact dates. Show your return ticket and that your stay is within the visa validity period. Emphasize you\'ll return home.', tip:'Overstaying is the main concern — show strong ties to home.' },
+    { q:'Who will pay for your trip?', a:'State clearly whether you are self-funding or if a sponsor is paying. Be ready to present bank statements or a sponsor letter.', tip:'Show bank statements from the past 3–6 months as evidence.' },
+    { q:'Do you have family members in the United States?', a:'Answer honestly: name their relationship, immigration status. Having U.S. family is not disqualifying — it\'s how you handle it.', tip:'Acknowledge family ties while emphasizing your own intent to return home.' },
+    { q:'What is your employment status back home?', a:'Describe your current employer, title, and how long you\'ve been employed. Bring your employment letter.', tip:'Strong employment ties at home signal you intend to return.' },
+  ],
+  'F-1 Student': [
+    { q:'Which school are you attending and why?', a:'Name the school, program, and start date. Explain why this specific school and program advance your career goals.', tip:'Connect the program directly to your career plans back home.' },
+    { q:'How will you pay for your education?', a:'Explain your funding source — scholarship, personal savings, family sponsor. Be ready to show financial documents.', tip:'Demonstrate funds covering all years of study, not just the first.' },
+    { q:'What are your plans after completing your studies?', a:'Show concrete plans to return home — career opportunities, family, property. The officer needs to believe you\'ll come back.', tip:'Research job opportunities in your field in your home country.' },
+    { q:'Why did you choose this program over one in your home country?', a:'Explain specific academic reasons: program quality, research opportunities, faculty, or professional network.', tip:'Avoid saying "to stay in the U.S. after" — focus on academic merit.' },
+    { q:'Do you speak English well enough for your program?', a:'Demonstrate confidence. Mention TOEFL/IELTS scores if applicable. Speak clearly and calmly during the interview.', tip:'Your English during the interview itself is being evaluated.' },
+  ],
+  'H-1B Work': [
+    { q:'Who is your U.S. employer?', a:'State the employer name, location, and your start date. Bring the I-797 approval notice.', tip:'Have the I-129 approval notice visible — the officer will review it.' },
+    { q:'What will your job title and duties be?', a:'Describe your role clearly and specifically. Mention your degree and how it qualifies you for the specialty occupation.', tip:'Specialty occupation requires at minimum a bachelor\'s degree in a specific field.' },
+    { q:'Do you intend to immigrate permanently?', a:'You can honestly say you intend to remain in the U.S. during the petition period. H-1B allows for "dual intent."', tip:'H-1B has dual intent — you are allowed to seek a green card in the future.' },
+  ],
+  'K-1 Fiancé': [
+    { q:'How did you and your fiancé(e) meet?', a:'Provide a clear, honest narrative: when and where you first met, how the relationship progressed, timeline of visits.', tip:'Bring photos, chat logs, flight records as supporting evidence.' },
+    { q:'When did you last see your fiancé(e) in person?', a:'You must have met in person within the past 2 years. State the date, location, and how long you visited.', tip:'If there were exemptions for the in-person requirement, bring documentation.' },
+    { q:'When and where will you get married?', a:'Provide specific plans: venue, date range, officiant, guests. Marriage must occur within 90 days of entry.', tip:'Even tentative plans show serious intent. The officer wants to see commitment.' },
+    { q:'Have you both been married before?', a:'Answer honestly. Bring certified copies of divorce decrees or death certificates for any prior marriages.', tip:'Prior marriages are not disqualifying — dishonesty is.' },
+  ],
+  'Diversity Visa': [
+    { q:'How were you selected for the Diversity Visa program?', a:'Explain the lottery process. Provide your confirmation number, entry date, and notify them of KCC notification.', tip:'Bring your DV lottery confirmation letter and case number.' },
+    { q:'What is your educational background?', a:'DV requires at minimum a high school diploma or 2 years of qualifying work experience. Describe your credentials clearly.', tip:'Bring the original diploma and certified translations if not in English.' },
+    { q:'What are your plans in the United States?', a:'Describe your intention to work, contribute to society, and build a life. Mention skills and career background.', tip:'Show you have a plan — not just a wish to be in the U.S.' },
+  ]
+};
+
+const TIMELINE_DATA = [
+  { time:'Day Before', title:'Prepare Your Documents', desc:'Organize all required documents in a clear folder. Confirm your appointment time and embassy location. Print all confirmations.' },
+  { time:'Morning of Appointment', title:'Dress Professionally', desc:'Business casual attire is recommended. Dress neatly — first impressions matter. Avoid excessive jewelry.' },
+  { time:'30 minutes before', title:'Arrive Early & Store Electronics', desc:'Arrive 15–30 minutes before your appointment. Mobile phones and laptops are NOT allowed inside. Use embassy storage facilities or leave devices with a trusted person.' },
+  { time:'Arrival', title:'Security Screening', desc:'Pass through metal detectors and X-ray screening. Show your appointment confirmation and passport to security personnel.' },
+  { time:'Check-in', title:'Queue & Document Submission', desc:'Your documents will be reviewed and collected by consular staff. You may receive a token or queue number. Biometrics (fingerprints) are taken.' },
+  { time:'Waiting', title:'Interview Queue', desc:'Wait in the designated interview area. Interviews are called by window or name. This can take 1–3+ hours; bring water and patience.' },
+  { time:'Interview (2–5 min)', title:'Consular Interview', desc:'The interview is typically very brief — 2 to 5 minutes. Answer questions honestly, concisely, and confidently. Speak in English unless instructed otherwise.' },
+  { time:'Post-Interview', title:'Administrative Processing', desc:'If approved, your passport may be retained for visa stamping. You\'ll receive a collection slip. Some cases require additional "administrative processing" (AP) — be patient.' },
+  { time:'1–5 business days', title:'Passport / Visa Collection', desc:'Collect your visa-stamped passport from the courier pickup location or embassy as instructed. Review all visa details carefully upon receipt.' },
+];
+
+const RESOURCES_DATA = [
+  { icon:'🇺🇸', name:'U.S. Department of State — Visas', desc:'Official visa information and forms', url:'https://travel.state.gov/content/travel/en/us-visas.html' },
+  { icon:'🏛️', name:'USCIS — U.S. Citizenship & Immigration', desc:'Petitions, green cards, and naturalization', url:'https://www.uscis.gov' },
+  { icon:'📅', name:'U.S. Visa Appointment Scheduling', desc:'Book or manage your embassy appointment', url:'https://www.ustraveldocs.com' },
+  { icon:'📋', name:'DS-160 Application Form', desc:'Complete your nonimmigrant visa application', url:'https://ceac.state.gov/genniv/' },
+  { icon:'📊', name:'DS-260 Immigrant Visa Application', desc:'For immigrant visa applicants', url:'https://ceac.state.gov/iv/' },
+  { icon:'🌍', name:'Find Your U.S. Embassy or Consulate', desc:'Locate embassy websites across Africa', url:'https://www.usembassy.gov' },
+  { icon:'💰', name:'Visa Fee Information', desc:'MRV fee amounts and payment methods', url:'https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees.html' },
+  { icon:'👨‍⚖️', name:'Find an Immigration Attorney (AILA)', desc:'American Immigration Lawyers Association', url:'https://www.aila.org/find-immigration-lawyer' },
+];
+
+// ─── APP STATE ────────────────────────────────────────────────────────────────
+let checklistState = JSON.parse(localStorage.getItem('checklistState') || '{}');
+let mockVisaSelected = null;
+let mockQuestions = [];
+let mockCurrentQ = 0;
+let feedbackShown = false;
+
+// ─── NAVIGATION ───────────────────────────────────────────────────────────────
+function goTo(screen) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(screen).classList.add('active');
+}
+
+function registerApp() {
+  const username = document.querySelector('#register input[type="text"]').value.trim();
+  const email = document.querySelector('#register input[type="email"]').value.trim();
+  const pass = document.querySelectorAll('#register input[type="password"]')[0].value.trim();
+  const confirm = document.querySelectorAll('#register input[type="password"]')[1].value.trim();
+  if (!username || !email || !pass || !confirm) {
+    alert('Please fill all fields.');
+    return;
+  }
+  if (pass !== confirm) {
+    alert('Passwords do not match.');
+    return;
+  }
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('main').classList.add('active');
+  initApp();
+}
+
+function switchTab(tab, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + tab).classList.add('active');
+  btn.classList.add('active');
+  closeDetailSilent();
+}
+
+function togglePw(id) {
+  const el = document.getElementById(id);
+  el.type = el.type === 'password' ? 'text' : 'password';
+}
+
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('open');
+}
+
+function toggleProfileMenu(force) {
+  const menu = document.getElementById('profile-menu');
+  if (!menu) return;
+  const shouldOpen = typeof force === 'boolean' ? force : menu.style.display !== 'flex';
+  menu.style.display = shouldOpen ? 'flex' : 'none';
+}
+
+function closeProfileMenu() {
+  toggleProfileMenu(false);
+}
+
+function signOut() {
+  // clear any persisted state if needed
+  localStorage.removeItem('checklistState');
+  checklistState = {};
+  closeProfileMenu();
+
+  // navigate back to splash
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('splash').classList.add('active');
+
+  // hide main app
+  document.getElementById('main').classList.remove('active');
+}
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+function initApp() {
+  renderVisaList(VISAS);
+  renderChecklist();
+  renderQA('B1/B2 Visitor');
+  renderMockSetup();
+  renderTimeline();
+  renderResources();
+  renderQAPills();
+
+  // close profile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('profile-menu');
+    const btn = document.getElementById('profile-btn');
+    if (!menu || !btn) return;
+    if (menu.contains(e.target) || btn.contains(e.target)) return;
+    closeProfileMenu();
+  });
+}
+
+// ─── VISA LIST ────────────────────────────────────────────────────────────────
+function renderVisaList(list) {
+  const el = document.getElementById('visa-list');
+  el.innerHTML = list.map(v => `
+    <div class="visa-card" onclick="openDetail('${v.code}')">
+      <div class="visa-icon" style="background:${v.color || 'var(--grad)'};">${v.icon}</div>
+      <div class="visa-info">
+        <strong>${v.label}</strong>
+        <span>${v.type} Visas · ${v.desc}</span>
+      </div>
+      <span class="visa-arrow">›</span>
+    </div>
+  `).join('');
+}
+
+function filterVisas(q) {
+  const filtered = VISAS.filter(v =>
+    v.label.toLowerCase().includes(q.toLowerCase()) ||
+    v.desc.toLowerCase().includes(q.toLowerCase()) ||
+    v.type.toLowerCase().includes(q.toLowerCase())
+  );
+  renderVisaList(filtered);
+}
+
+function openDetail(code) {
+  const v = VISAS.find(x => x.code === code);
+  if (!v) return;
+  document.getElementById('page-visa').classList.remove('active');
+  const det = document.getElementById('visa-detail');
+  det.classList.add('active');
+  document.getElementById('visa-detail-content').innerHTML = `
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+      <div style="width:64px;height:64px;border-radius:16px;background:${v.color || 'var(--grad)'};display:grid;place-items:center;font-size:2rem;box-shadow:0 8px 24px rgba(0,0,0,0.3);">${v.icon}</div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;">${v.label}</div>
+        <div style="color:var(--muted);font-size:0.82rem;">${v.type}</div>
+      </div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;margin-bottom:1.2rem;">
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.5rem;color:var(--accent);">About This Visa</div>
+      <p style="font-size:0.87rem;color:var(--muted);line-height:1.6;">${v.about}</p>
+    </div>
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--accent);margin-bottom:0.8rem;">Key Requirements</div>
+    ${v.requirements.map(r => `
+      <div style="display:flex;align-items:center;gap:0.8rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.8rem 1rem;margin-bottom:0.5rem;">
+        <span style="color:var(--pink);font-size:0.9rem;">✓</span>
+        <span style="font-size:0.87rem;">${r}</span>
+      </div>
+    `).join('')}
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--accent);margin:1.2rem 0 0.8rem;">Common Interview Questions</div>
+    ${v.questions.map(q => `
+      <div style="background:rgba(217,70,239,0.08);border:1px solid rgba(217,70,239,0.2);border-radius:10px;padding:0.9rem 1rem;margin-bottom:0.5rem;font-size:0.87rem;">
+        💬 ${q}
+      </div>
+    `).join('')}
+    <button class="btn-primary" style="margin-top:1.5rem;max-width:100%;" onclick="goToPractice('${v.label}')">PRACTICE QUESTIONS →</button>
+  `;
+}
+
+function closeDetail() {
+  document.getElementById('visa-detail').classList.remove('active');
+  document.getElementById('page-visa').classList.add('active');
+}
+
+function closeDetailSilent() {
+  document.getElementById('visa-detail').classList.remove('active');
+}
+
+function goToPractice(label) {
+  closeDetail();
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-interview').classList.add('active');
+  document.querySelectorAll('.nav-item')[2].classList.add('active');
+  const cat = Object.keys(QA_DATA).find(k => label.includes(k.split(' ')[0])) || Object.keys(QA_DATA)[0];
+  renderQA(cat);
+  updatePills(cat);
+}
+
+// ─── CHECKLIST ────────────────────────────────────────────────────────────────
+function renderChecklist() {
+  const visa = document.getElementById('checklist-visa').value;
+  const data = CHECKLIST_DATA[visa];
+  if (!data) return;
+  const key = visa;
+  if (!checklistState[key]) checklistState[key] = {};
+  let html = '';
+  let total = 0; let done = 0;
+  Object.entries(data).forEach(([section, items]) => {
+    html += `<div class="section-title">${section.charAt(0).toUpperCase() + section.slice(1)} Documents</div>`;
+    items.forEach((item, i) => {
+      const id = `${key}-${section}-${i}`;
+      const checked = !!checklistState[key][id];
+      if (checked) done++;
+      total++;
+      html += `
+        <div class="checklist-item ${checked ? 'done' : ''}" onclick="toggleCheck('${id}', '${key}', this)">
+          <div class="ci-check">${checked ? '✓' : ''}</div>
+          <div class="ci-body">
+            <div class="ci-title">${item.title}</div>
+            <div class="ci-note">${item.note}</div>
+          </div>
+        </div>`;
+    });
+  });
+  document.getElementById('checklist-items').innerHTML = html;
+  const pct = total ? Math.round((done/total)*100) : 0;
+  document.getElementById('checklist-progress').style.width = pct + '%';
+  document.getElementById('checklist-progress-label').textContent = `${done} of ${total} completed (${pct}%)`;
+}
+
+function toggleCheck(id, key, el) {
+  if (!checklistState[key]) checklistState[key] = {};
+  checklistState[key][id] = !checklistState[key][id];
+  localStorage.setItem('checklistState', JSON.stringify(checklistState));
+  el.classList.toggle('done', checklistState[key][id]);
+  el.querySelector('.ci-check').textContent = checklistState[key][id] ? '✓' : '';
+  // update progress
+  const items = document.querySelectorAll('.checklist-item');
+  let done = 0, total = items.length;
+  items.forEach(i => { if (i.classList.contains('done')) done++; });
+  const pct = total ? Math.round((done/total)*100) : 0;
+  document.getElementById('checklist-progress').style.width = pct + '%';
+  document.getElementById('checklist-progress-label').textContent = `${done} of ${total} completed (${pct}%)`;
+}
+
+// ─── Q&A ─────────────────────────────────────────────────────────────────────
+function renderQAPills() {
+  const cats = Object.keys(QA_DATA);
+  document.getElementById('qa-pills').innerHTML = cats.map((c,i) => `
+    <button class="pill ${i===0?'active':''}" onclick="renderQA('${c}');updatePills('${c}')">${c}</button>
+  `).join('');
+}
+
+function updatePills(active) {
+  document.querySelectorAll('#qa-pills .pill').forEach(p => {
+    p.classList.toggle('active', p.textContent === active);
+  });
+}
+
+function renderQA(cat) {
+  const data = QA_DATA[cat];
+  if (!data) return;
+  document.getElementById('qa-list').innerHTML = data.map((item, i) => `
+    <div class="qa-card" onclick="toggleQA(this)">
+      <div class="qa-question">
+        <span>${item.q}</span>
+        <span class="qa-toggle">⌄</span>
+      </div>
+      <div class="qa-answer">
+        ${item.a}
+        <div class="tip">💡 <strong>Pro Tip:</strong> ${item.tip}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleQA(el) {
+  el.classList.toggle('open');
+}
+
+// ─── MOCK INTERVIEW ───────────────────────────────────────────────────────────
+const MOCK_VISA_OPTIONS = [
+  { code:'b1b2', label:'B1/B2', icon:'✈️', desc:'Visitor' },
+  { code:'f1', label:'F-1', icon:'🎓', desc:'Student' },
+  { code:'h1b', label:'H-1B', icon:'💼', desc:'Work' },
+  { code:'k1', label:'K-1', icon:'💍', desc:'Fiancé' },
+  { code:'dv', label:'DV Lottery', icon:'🌍', desc:'Diversity' },
+  { code:'ir', label:'IR', icon:'👨‍👩‍👧', desc:'Immigrant' },
+];
+
+const MOCK_Q_BANK = {
+  b1b2: [
+    'Why are you traveling to the United States?',
+    'How long do you plan to stay, and where will you stay?',
+    'Who is sponsoring or funding your trip?',
+    'What is your current employment situation?',
+    'What ties do you have to your home country that guarantee your return?',
+  ],
+  f1: [
+    'Which university have you been accepted to, and what program will you study?',
+    'Why did you choose this particular school and program?',
+    'How will you finance your education and living expenses?',
+    'What are your career plans after completing your degree?',
+    'What family or professional ties do you have to your home country?',
+  ],
+  h1b: [
+    'What is the name of your U.S. employer and what will you be doing?',
+    'What are your educational qualifications for this position?',
+    'Where will you be working and who is your direct supervisor?',
+    'How long is your H-1B petition approved for?',
+    'Have you previously worked in the United States?',
+  ],
+  k1: [
+    'How did you first meet your fiancé(e)?',
+    'When was the last time you saw your fiancé(e) in person?',
+    'What are your wedding plans once you arrive in the United States?',
+    'Have either of you been previously married?',
+    'What do you know about your fiancé(e)\'s family?',
+  ],
+  dv: [
+    'How did you submit your DV lottery entry?',
+    'What is your educational background?',
+    'What are your professional or work skills?',
+    'What are your plans once you arrive in the United States?',
+    'Do you have any family already living in the U.S.?',
+  ],
+  ir: [
+    'How are you related to your U.S. petitioner?',
+    'How often have you been in contact with your petitioning relative?',
+    'How will you support yourself financially after arriving in the U.S.?',
+    'Have you reviewed and signed the I-864 Affidavit of Support?',
+    'Have you ever had any issues with immigration authorities in any country?',
+  ]
+};
+
+const FEEDBACK_POOL = [
+  { text: 'Your answer is clear and direct. You demonstrated a genuine purpose for travel and addressed potential immigration concerns upfront.', badges:['✅ Clear purpose','✅ Honest','💡 Add specific dates'] },
+  { text: 'Good structure! You showed financial capability. Consider mentioning specific ties to your home country — property, family, or employment.', badges:['✅ Financial evidence','⚠️ Strengthen home ties','💡 Mention return date'] },
+  { text: 'You answered concisely. The officer will appreciate your preparation. Be ready to provide supporting documents for everything you mentioned.', badges:['✅ Concise','✅ Document ready','💡 Practice out loud'] },
+  { text: 'Solid answer. To strengthen it, be more specific about dates and names. Vague answers can raise unnecessary questions.', badges:['⚠️ Add specifics','✅ Honest approach','💡 Practice dates/names'] },
+  { text: 'Your answer shows confidence. Ensure you bring documentation to support every claim made during the interview.', badges:['✅ Confident tone','✅ Well-structured','💡 Prepare backup docs'] },
+];
+
+function renderMockSetup() {
+  document.getElementById('mock-visa-grid').innerHTML = MOCK_VISA_OPTIONS.map(v => `
+    <div class="vsg-item" onclick="selectMockVisa('${v.code}', this)">
+      <div class="vi">${v.icon}</div>
+      <strong>${v.label}</strong>
+      <small>${v.desc}</small>
+    </div>
+  `).join('');
+}
+
+function selectMockVisa(code, el) {
+  document.querySelectorAll('.vsg-item').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  mockVisaSelected = code;
+}
+
+function startMock() {
+  if (!mockVisaSelected) {
+    alert('Please select a visa type first.');
+    return;
+  }
+  mockQuestions = MOCK_Q_BANK[mockVisaSelected] || MOCK_Q_BANK.b1b2;
+  mockCurrentQ = 0;
+  feedbackShown = false;
+  document.getElementById('mock-setup').style.display = 'none';
+  document.getElementById('mock-session').classList.add('active');
+  showQuestion();
+}
+
+function showQuestion() {
+  if (mockCurrentQ >= mockQuestions.length) {
+    endMock(); return;
+  }
+  feedbackShown = false;
+  document.getElementById('current-q').textContent = mockQuestions[mockCurrentQ];
+  document.getElementById('q-counter').textContent = `Question ${mockCurrentQ+1} of ${mockQuestions.length}`;
+  document.getElementById('answer-text').value = '';
+  document.getElementById('feedback-card').classList.remove('show');
+  const nb = document.getElementById('next-btn');
+  if (nb) nb.style.display = 'none';
+}
+
+function submitAnswer() {
+  const ans = document.getElementById('answer-text').value.trim();
+  if (!ans) { alert('Please type an answer before submitting.'); return; }
+  const fb = FEEDBACK_POOL[Math.floor(Math.random() * FEEDBACK_POOL.length)];
+  document.getElementById('feedback-text').textContent = fb.text;
+  document.getElementById('feedback-badges').innerHTML = fb.badges.map(b => `<span class="badge ${b.startsWith('✅') ? 'good' : b.startsWith('⚠️') ? 'warn' : 'tip'}">${b}</span>`).join('');
+  document.getElementById('feedback-card').classList.add('show');
+  feedbackShown = true;
+  let nb = document.getElementById('next-btn');
+  nb.style.display = 'block';
+  nb.textContent = mockCurrentQ + 1 < mockQuestions.length ? 'NEXT QUESTION →' : 'FINISH INTERVIEW';
+}
+
+function nextQ() {
+  mockCurrentQ++;
+  showQuestion();
+}
+
+function skipQ() { mockCurrentQ++; showQuestion(); }
+
+function endMock() {
+  document.getElementById('mock-session').innerHTML = `
+    <div style="text-align:center;padding:2rem 0;">
+      <div style="font-size:4rem;margin-bottom:1rem;">🎉</div>
+      <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:0.5rem;">Interview Complete!</h3>
+      <p style="color:var(--muted);font-size:0.88rem;line-height:1.6;max-width:280px;margin:0 auto 2rem;">Great practice session! Review the feedback for each question and keep practicing until your answers feel natural and confident.</p>
+      <button class="btn-primary" style="max-width:100%;" onclick="resetMock()">PRACTICE AGAIN</button>
+    </div>
+  `;
+}
+
+function resetMock() {
+  document.getElementById('mock-setup').style.display = 'block';
+  document.getElementById('mock-session').classList.remove('active');
+  document.getElementById('mock-session').innerHTML = `
+    <div class="interview-badge"><span class="dot"></span> Live Interview Session</div>
+    <div class="q-counter" id="q-counter">Question 1 of 5</div>
+    <div class="current-question" id="current-q"></div>
+    <div class="answer-area">
+      <textarea id="answer-text" placeholder="Type your answer here... Be honest, clear, and concise."></textarea>
+    </div>
+    <div class="mock-controls">
+      <button class="btn-secondary" onclick="skipQ()">Skip</button>
+      <button class="btn-primary-sm" onclick="submitAnswer()">Get Feedback →</button>
+    </div>
+    <div class="feedback-card" id="feedback-card">
+      <h4>🤖 AI Feedback</h4>
+      <p id="feedback-text"></p>
+      <div class="score-badges" id="feedback-badges"></div>
+    </div>
+    <button class="btn-primary" style="margin-top:1rem;max-width:100%;display:none;" onclick="nextQ()" id="next-btn">NEXT QUESTION →</button>
+  `;
+  document.querySelectorAll('.vsg-item').forEach(e => e.classList.remove('selected'));
+  mockVisaSelected = null;
+}
+
+// ─── TIMELINE ─────────────────────────────────────────────────────────────────
+function renderTimeline() {
+  document.getElementById('timeline').innerHTML = TIMELINE_DATA.map(item => `
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-time">${item.time}</div>
+        <div class="tl-title">${item.title}</div>
+        <div class="tl-desc">${item.desc}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ─── RESOURCES ────────────────────────────────────────────────────────────────
+function renderResources() {
+  document.getElementById('resources-list').innerHTML = RESOURCES_DATA.map(r => `
+    <a class="resource-card" href="${r.url}" target="_blank" rel="noopener">
+      <div class="res-icon">${r.icon}</div>
+      <div class="res-body">
+        <strong>${r.name}</strong>
+        <span>${r.desc}</span>
+      </div>
+      <span class="res-arrow">›</span>
+    </a>
+  `).join('');
+}
+</script>
+</body>
+</html>
