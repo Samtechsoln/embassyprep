@@ -66,17 +66,17 @@
     box-shadow: 0 0 40px rgba(124,58,237,0.5);
     font-size: 1.8rem;
   }
-  .logo-text { font-family: sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); }
+  .logo-text { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); }
   .logo-text span { color: var(--pink); }
   .splash-hero { margin: 3rem 0 2.5rem; }
   .splash-hero h1 {
-    font-family: sans-serif;
-    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.6rem, 7vw, 4rem);
     font-weight: 800;
     line-height: 1.1;
     color: #fff;
   }
-  .splash-hero h1 em { color: var(--pink); font-style: normal; font-family: sans-serif }
+  .splash-hero h1 em { color: var(--pink); font-style: normal; }
   .splash-hero p { color: var(--muted); margin-top: 1rem; font-size: 1rem; max-width: 320px; margin-inline: auto; }
   .btn-primary {
     display: block; width: 100%; max-width: 320px; margin: 0 auto;
@@ -116,7 +116,7 @@
   }
   .back-btn span { font-size: 1.6rem; }
   .auth-card { width: 100%; max-width: 380px; }
-  .auth-title { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 2rem; }
+  .auth-title { font-family: sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 2rem; }
   .auth-title span { color: var(--pink); }
   .input-group {
     position: relative; margin-bottom: 1rem;
@@ -152,7 +152,7 @@
     border-bottom: 1px solid var(--border);
     position: sticky; top: 0; z-index: 100;
   }
-  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; }
+  .nav-logo { font-family: sans-serif; font-weight: 800; font-size: 1.1rem; }
   .nav-logo span { color: var(--pink); }
   .hamburger { background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
   .profile-wrapper { position: relative; }
@@ -217,7 +217,7 @@
   .page.active { display: block; }
   /* ─── VISA SELECTION ─── */
   .page-header { margin-bottom: 1.5rem; }
-  .page-header h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.6rem; }
+  .page-header h2 { font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 1.6rem; }
   .page-header p { color: var(--muted); font-size: 0.88rem; margin-top: 0.3rem; }
   .search-bar {
     display: flex; align-items: center; gap: 0.7rem;
@@ -243,7 +243,7 @@
     font-size: 1.4rem; flex-shrink: 0;
   }
   .visa-info { flex: 1; }
-  .visa-info strong { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; display: block; }
+  .visa-info strong { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem; display: block; }
   .visa-info span { color: var(--muted); font-size: 0.82rem; }
   .visa-arrow { color: var(--muted); font-size: 1rem; }
   /* ─── CHECKLIST ─── */
@@ -260,7 +260,7 @@
     border-radius: 20px; padding: 0.4rem 1rem; font-size: 0.82rem; color: var(--pink);
     display: flex; align-items: center; gap: 0.4rem; cursor: pointer;
   }
-  .section-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--accent); margin: 1.2rem 0 0.8rem; }
+  .section-title { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem; color: var(--accent); margin: 1.2rem 0 0.8rem; }
   .checklist-item {
     display: flex; align-items: flex-start; gap: 0.9rem;
     background: var(--card); border: 1px solid var(--border);
@@ -316,7 +316,7 @@
   }
   /* ─── MOCK INTERVIEW ─── */
   .mock-setup { text-align: center; padding: 1rem 0; }
-  .mock-setup h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .mock-setup h3 { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 0.5rem; }
   .mock-setup p { color: var(--muted); font-size: 0.87rem; margin-bottom: 2rem; }
   .visa-select-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem; }
   .vsg-item {
@@ -326,7 +326,7 @@
   }
   .vsg-item:hover, .vsg-item.selected { border-color: var(--pink); background: rgba(217,70,239,0.1); }
   .vsg-item .vi { font-size: 1.8rem; margin-bottom: 0.3rem; }
-  .vsg-item strong { font-family: 'Syne', sans-serif; font-size: 0.85rem; display: block; }
+  .vsg-item strong { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; display: block; }
   .vsg-item small { color: var(--muted); font-size: 0.72rem; }
   /* ─── MOCK SESSION ─── */
   .mock-session { display: none; }
@@ -360,14 +360,14 @@
     flex: 1; padding: 0.9rem;
     background: var(--card); border: 1px solid var(--border);
     border-radius: 50px; color: var(--text);
-    font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.88rem;
+    font-family: sans-serif; font-weight: 600; font-size: 0.88rem;
     cursor: pointer; transition: border-color 0.2s;
   }
   .btn-secondary:hover { border-color: var(--purple); }
   .btn-primary-sm {
     flex: 2; padding: 0.9rem;
     background: var(--grad); border: none; border-radius: 50px;
-    color: #fff; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem;
+    color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.88rem;
     cursor: pointer; transition: opacity 0.2s;
   }
   .btn-primary-sm:hover { opacity: 0.9; }
@@ -376,7 +376,7 @@
     border-radius: 14px; padding: 1.2rem; margin-top: 1rem; display: none;
   }
   .feedback-card.show { display: block; }
-  .feedback-card h4 { color: var(--green); font-family: 'Syne', sans-serif; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem; }
+  .feedback-card h4 { color: var(--green); font-family: 'DM Sans', sans-serif; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem; }
   .feedback-card p { color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
   .score-badges { display: flex; gap: 0.6rem; margin-top: 0.8rem; flex-wrap: wrap; }
   .badge {
@@ -434,7 +434,7 @@
     background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.2);
     border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 1.5rem;
   }
-  .disclaimer h4 { color: var(--red); font-family: 'Syne', sans-serif; font-size: 0.88rem; margin-bottom: 0.4rem; }
+  .disclaimer h4 { color: var(--red); font-family: sans-serif; font-size: 0.88rem; margin-bottom: 0.4rem; }
   .disclaimer p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
   .profile-hero {
     background: linear-gradient(135deg, rgba(124,58,237,0.28), rgba(217,70,239,0.18));
@@ -538,7 +538,7 @@
   .stat-chip strong {
     display: block;
     margin-top: 0.25rem;
-    font-family: 'Syne', sans-serif;
+    font-family: sans-serif;
     font-size: 1rem;
   }
   /* ─── ANIMATIONS ─── */
@@ -1204,22 +1204,22 @@ function openDetail(code) {
     <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
       <div style="width:64px;height:64px;border-radius:16px;background:${v.color || 'var(--grad)'};display:grid;place-items:center;font-size:2rem;box-shadow:0 8px 24px rgba(0,0,0,0.3);">${v.icon}</div>
       <div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;">${v.label}</div>
+        <div style="font-family:'DM Sans',sans-serif;font-weight:800;font-size:1.4rem;">${v.label}</div>
         <div style="color:var(--muted);font-size:0.82rem;">${v.type}</div>
       </div>
     </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;margin-bottom:1.2rem;">
-      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.5rem;color:var(--accent);">About This Visa</div>
+      <div style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.5rem;color:var(--accent);">About This Visa</div>
       <p style="font-size:0.87rem;color:var(--muted);line-height:1.6;">${v.about}</p>
     </div>
-    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--accent);margin-bottom:0.8rem;">Key Requirements</div>
+    <div style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;color:var(--accent);margin-bottom:0.8rem;">Key Requirements</div>
     ${v.requirements.map(r => `
       <div style="display:flex;align-items:center;gap:0.8rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.8rem 1rem;margin-bottom:0.5rem;">
         <span style="color:var(--pink);font-size:0.9rem;">✓</span>
         <span style="font-size:0.87rem;">${r}</span>
       </div>
     `).join('')}
-    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--accent);margin:1.2rem 0 0.8rem;">Common Interview Questions</div>
+    <div style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;color:var(--accent);margin:1.2rem 0 0.8rem;">Common Interview Questions</div>
     ${v.questions.map(q => `
       <div style="background:rgba(217,70,239,0.08);border:1px solid rgba(217,70,239,0.2);border-radius:10px;padding:0.9rem 1rem;margin-bottom:0.5rem;font-size:0.87rem;">
         💬 ${q}
